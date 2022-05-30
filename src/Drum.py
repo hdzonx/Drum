@@ -1,4 +1,3 @@
-from termios import VERASE
 import pygame
 from pygame import mixer
 
@@ -13,8 +12,7 @@ gray = (128, 128, 128)
 
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Beat Makes')
-#label_font = pygame.font.Font('Roboto-Bold.ttf', 32)
-label_font = pygame.font.match_font('bitstreamverasans')
+label_font = pygame.font.SysFont('Verdana', 26)
 
 fps = 60
 timer = pygame.time.Clock()
@@ -24,6 +22,31 @@ timer = pygame.time.Clock()
 def draw_grid():
     left_box = pygame.draw.rect(screen, gray, [0, 0, 200, HEIGHT], 5)
     bottom_box = pygame.draw.rect(screen, gray, [0, HEIGHT-200, WIDTH, 200], 5) 
+    boxes = []
+    colors = [gray, white, gray]
+    hi_hat_text = label_font.render('Hi hat', True, white)
+    screen.blit(hi_hat_text, (30, 30))
+
+    snare_text = label_font.render('Snare', True, white)
+    screen.blit(snare_text, (30, 110))
+
+    kick_text = label_font.render('Bass Drum', True, white)
+    screen.blit(kick_text, (30, 190))
+
+    crash_text = label_font.render('Crash', True, white)
+    screen.blit(crash_text, (30, 270))
+
+    clap_text = label_font.render('Clap', True, white)
+    screen.blit(clap_text, (30, 350))
+
+    floor_text = label_font.render('Floor Tom', True, white)
+    screen.blit(floor_text, (30, 430))
+
+    for i in range(6):
+        pygame.draw.line(screen, gray, (0, (i*80)+80), (200, (i*80)+80), 5)
+
+
+
 
 
 
